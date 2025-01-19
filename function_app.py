@@ -56,7 +56,7 @@ def main(event: func.EventHubEvent):
     # Blob Storageへの接続設定
     connection_string = os.getenv("AzureWebJobsStorage")
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
-    container_name = f"dx-container"
+    container_name = os.getenv("AzureContainerName")
     blob_name = f"{year}/{month:02d}/{day:02d}/machine-{machine_id.lower()}-data/{machine_id}_{timestamp}.csv"
 
     try:
